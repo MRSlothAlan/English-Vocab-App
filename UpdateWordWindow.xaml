@@ -1,0 +1,30 @@
+﻿<Window x:Name="UpdateWordWindow_Main" x:Class="EngVocabApp.UpdateWordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EngVocabApp"
+        mc:Ignorable="d"
+        Title="Update Word" Height="320" Width="499.7" MinWidth="500" MinHeight="320" ScrollViewer.VerticalScrollBarVisibility="Auto">
+    <Grid Margin="0,0,0.333,-0.333">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="121*"/>
+                <ColumnDefinition Width="372*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Original Spelling:" HorizontalAlignment="Left" Margin="11,41,0,0" VerticalAlignment="Top" Height="26" Width="100"/>
+            <Label Content="Entry Id:" HorizontalAlignment="Left" Margin="58,15,0,0" VerticalAlignment="Top" Height="26" Width="53"/>
+            <Label Content="Original Meaning:" HorizontalAlignment="Left" Margin="5,72,0,0" VerticalAlignment="Top" Height="26" Width="106"/>
+            <Label Content="Updated Spelling:" HorizontalAlignment="Left" Margin="7,136,0,0" VerticalAlignment="Top" Height="30" Width="104"/>
+            <Label Content="Updated Meaning:" HorizontalAlignment="Left" Margin="2,166,0,0" VerticalAlignment="Top" Height="31" Width="109"/>
+            <Label x:Name="OriginalSpellingLabel" Content="Label" HorizontalAlignment="Left" Margin="130,41,252.333,0" VerticalAlignment="Top" TextOptions.TextFormattingMode="Display" Width="120" Grid.ColumnSpan="2"/>
+            <Label x:Name="OriginalMeaningLabel" Content="Label" HorizontalAlignment="Left" Margin="130,72,-227.667,0" VerticalAlignment="Top" Height="45" Width="600" MinWidth="350" MaxHeight="70" TextOptions.TextFormattingMode="Display" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="UpdatedSpellingTextBox" Height="23" Margin="130,137,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" KeyUp="UpdatedSpellingTextBox_KeyUp" TextOptions.TextFormattingMode="Display" FontSize="16" HorizontalAlignment="Left" Width="184" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="UpdatedMeaningTextBox" Height="68" Margin="130,169,-236.667,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" MaxHeight="70" MinWidth="350" TextOptions.TextFormattingMode="Display" Grid.ColumnSpan="2"/>
+            <Label x:Name="OriginalIDLabel" Content="Label" HorizontalAlignment="Left" Margin="130,15,72.333,0" VerticalAlignment="Top" TextOptions.TextFormattingMode="Display" Width="300" Grid.ColumnSpan="2"/>
+            <Label x:Name="isValidSpellingLabel" Content="Label" HorizontalAlignment="Left" Margin="350,135,0,0" VerticalAlignment="Top" Width="91" Grid.ColumnSpan="2"/>
+            <Button x:Name="Submit_Button" Content="Submit" Margin="130,261,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.016,0.5" HorizontalAlignment="Left" Width="100" Grid.ColumnSpan="2" Click="Submit_Button_Click"/>
+
+        </Grid>
+    </Grid>
+</Window>

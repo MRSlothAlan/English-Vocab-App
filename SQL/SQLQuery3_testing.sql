@@ -1,0 +1,4 @@
+﻿SELECT TOP 3 * FROM [dbo].EngVocab
+ORDER BY NEWID()
+
+SELECT COUNT(*) FROM [dbo].EngVocab

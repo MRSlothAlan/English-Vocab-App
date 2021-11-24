@@ -1,0 +1,6 @@
+C:\Users\tingk\source\repos\EngVocabApp\InAppDictionary\bin\Release\InAppDictionary.dll
+C:\Users\tingk\source\repos\EngVocabApp\InAppDictionary\bin\Release\InAppDictionary.pdb
+C:\Users\tingk\source\repos\EngVocabApp\InAppDictionary\obj\Release\InAppDictionary.csproj.CoreCompileInputs.cache
+C:\Users\tingk\source\repos\EngVocabApp\InAppDictionary\obj\Release\InAppDictionary.dll
+C:\Users\tingk\source\repos\EngVocabApp\InAppDictionary\obj\Release\InAppDictionary.pdb
+C:\Users\tingk\source\repos\EngVocabApp\InAppDictionary\obj\Release\InAppDictionary.csprojAssemblyReference.cache
