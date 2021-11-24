@@ -162,20 +162,6 @@ namespace InAppDictionary
         
         private int insertChildInOrder(char cwChar, Node curN)
         {
-            // fuck this.
-            /*
-            int len = curN.child.Count;
-            int i = 0;
-            for (; i < len; i++)
-            {
-                if (curN.child[i].c > cwChar)
-                {
-                    break;
-                }
-            }
-            if (i >= len && i > 0)
-                i--;
-            */
             curN.child.Insert(0, new Node(cwChar)); // have the reconfirm its behaviours
             curN.child.Sort();
             return this.binarySearchChar(cwChar, curN);

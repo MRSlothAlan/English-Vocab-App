@@ -89,26 +89,10 @@ namespace EngVocabApp
             }
         }
 
-        private void OpenSqlConnection()
-        {
-            // using : obj, at the end, disposed.
-            if (this.db == null || this.db.State == System.Data.ConnectionState.Closed)
-            {
-                this.db = new SqlConnection();
-                db.ConnectionString = connectionString;
-                db.Open();
-                dbStatus.Text = "[Database State]: " + db.State.ToString();
-                Console.WriteLine("State: {0}", db.State);
-                Console.WriteLine("ConnectionString: {0}", db.ConnectionString);
-            }
-        }
-
-
         public MainWindow()
         {
             this.initFlag = false;
             InitializeComponent();
-            OpenSqlConnection();
             vocabTextBox.Text = "";
             meaningTextBox.Text = "";
         }
