@@ -29,7 +29,7 @@ The format of the App.config is:
 ```
 # Implemented functions:
 ### Instant Spelling check & recommendation
-A customized tree data structure is implemented to search for words in O(N) time complexity.
+A customized tree data structure is implemented to search for words in ```math O(N^2(log(N)))``` time complexity.
 
 ### Basic operations for the word database
 Insert, update, delete vocabularies, along with their meanings.
