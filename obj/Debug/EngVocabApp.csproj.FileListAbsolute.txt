@@ -35,3 +35,10 @@ C:\Users\tingk\source\repos\EngVocabApp\bin\Debug\System.Security.Permissions.xm
 C:\Users\tingk\source\repos\EngVocabApp\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\tingk\source\repos\EngVocabApp\bin\Debug\InAppDictionary.dll
 C:\Users\tingk\source\repos\EngVocabApp\bin\Debug\InAppDictionary.pdb
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\InsertNewWord.g.cs
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\vocabMeaningUserControl.g.cs
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\InsertNewWord.baml
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\Themes\Generic.baml
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\vocabMeaningUserControl.baml
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\VocabExamplesUserControl.g.cs
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\VocabExamplesUserControl.baml

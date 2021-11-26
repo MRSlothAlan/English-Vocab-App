@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\tingk\source\repos\EngVocabApp\App.xaml
-31860408287
+7-1195010754
 2-1245056008
-11-452470836
+141726714825
 30-588255612
-MainWindow.xaml;QuizWindow.xaml;UpdateWordWindow.xaml;
+InsertNewWord.xaml;MainWindow.xaml;QuizWindow.xaml;Themes\Generic.xaml;UpdateWordWindow.xaml;VocabExamplesUserControl.xaml;vocabMeaningUserControl.xaml;
 
-True
+False
 

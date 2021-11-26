@@ -98,6 +98,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="InsertNewWord.xaml.cs">
+      <DependentUpon>InsertNewWord.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuizWindow.xaml.cs">
       <DependentUpon>QuizWindow.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,16 @@
     <Compile Include="UpdateWordWindow.xaml.cs">
       <DependentUpon>UpdateWordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VocabExamplesUserControl.xaml.cs">
+      <DependentUpon>VocabExamplesUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vocabMeaningUserControl.xaml.cs">
+      <DependentUpon>vocabMeaningUserControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="InsertNewWord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -130,7 +143,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UpdateWordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VocabExamplesUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vocabMeaningUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,7 +196,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="EngVocab.mdf">

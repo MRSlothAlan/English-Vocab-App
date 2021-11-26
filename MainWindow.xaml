@@ -94,11 +94,15 @@
             <MenuItem x:Name="SelectWordMenuQuit" Header="Quit" Click="SelectWordMenuQuit_Click"/>
         </Menu>
         <ListView x:Name="suggestedWords_ListView" HorizontalAlignment="Left" Height="170" Margin="320,35,0,0" VerticalAlignment="Top" Width="300" BorderBrush="{x:Null}" SelectionChanged="SuggestedWords_ListView_SelectionChanged" MinWidth="300" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1">
+            <ListView.ItemBindingGroup>
+                <BindingGroup/>
+            </ListView.ItemBindingGroup>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Suggested words" Width="300"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="ButtonTEST" Content="TEST" Grid.Column="1" HorizontalAlignment="Left" Margin="196.333,20,0,0" VerticalAlignment="Top" Width="75" Click="ButtonTEST_click"/>
     </Grid>
 </Window>

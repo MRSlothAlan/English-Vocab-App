@@ -1,0 +1,76 @@
+﻿<Window x:Class="EngVocabApp.InsertNewWord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EngVocabApp"
+        mc:Ignorable="d"
+        Title="InsertNewWord" Height="500" Width="800" MinWidth="800" MinHeight="500">
+    <Grid>
+        <Label Content="Word: "
+               HorizontalAlignment="Center" 
+               Margin="62,49,670.333,0" 
+               VerticalAlignment="Top" 
+               RenderTransformOrigin="0.404,0.154"
+               FontSize="16px" Width="61"/>
+
+        <TextBox x:Name="InsertNewWord_TextBox" HorizontalAlignment="Center" 
+                   Width="250"
+                   Height="30"
+                   Margin="123,50,420.333,0" 
+                   TextWrapping="Wrap" 
+                   Text="" 
+                   VerticalAlignment="Top"
+                   FontSize="16px"
+                   />
+
+        <ListView x:Name="InsertSuggestedWords_ListView" 
+                  HorizontalAlignment="Center" 
+                  Height="90" Margin="415,26,78.333,0" 
+                  VerticalAlignment="Top" Width="300" 
+                  BorderBrush="{x:Null}" 
+                  SelectionChanged="InsertSuggestedWords_ListView_SelectionChanged" 
+                  MinWidth="300" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Suggested words" Width="300"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid x:Name="InsertNewWordMeaningGrid"
+              Width="650" 
+              MaxWidth="650" MinWidth="650" Height="150" MinHeight="150" MaxHeight="150" Margin="62,121,31.333,49.667"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Top"
+              >
+            <Button x:Name="AddWordMeaningButton" 
+                Content="+" HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="30" Height="30" Margin="620,10,0,0" MinWidth="30" MaxWidth="30" MinHeight="30" MaxHeight="30" 
+                FontSize="16" FontWeight="Bold" FontStretch="UltraExpanded" Click="AddWordMeaningButton_Press"/>
+            <TextBlock HorizontalAlignment="Left" 
+                   Margin="0,10,0,0" 
+                   TextWrapping="Wrap" 
+                   FontSize="18"
+                   Text="Word Meanings" 
+                   VerticalAlignment="Top" Height="30" Width="620" TextAlignment="Center"/>
+            <ScrollViewer x:Name="WordMeaningScrollViewer" VerticalScrollBarVisibility="Hidden"
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Width="620" 
+                          Height="100"                    
+                          MaxHeight="200"
+                          Margin="0,50,0,0" >
+                <StackPanel 
+                    x:Name="WordMeaningStackPanel"
+                    HorizontalAlignment="Left" 
+                    Height="700" 
+                    Margin="0" 
+                    VerticalAlignment="Top" 
+                    Width="620" CanVerticallyScroll="True" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" CanHorizontallyScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</Window>
+

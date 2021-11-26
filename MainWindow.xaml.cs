@@ -18,6 +18,11 @@ using System.Data;
 using System.Configuration;
 using InAppDictionary;
 
+/*
+ * Today's to-do:
+ * Add datatable, meaning table and example table
+ * Update the UI, make an insert UI.
+ * */
 
 namespace EngVocabApp
 {
@@ -62,7 +67,9 @@ namespace EngVocabApp
          * ================ System parameters 
          * */
         string connectionString = (string)System.Configuration.ConfigurationManager.AppSettings["dbConnStr"].ToString();
-        private SqlConnection db;
+
+        // this is not needed anymore
+        // private SqlConnection db;
 
         public static void wordValidationGlobal(ListView inSuggestionListView, string cur_word, Label inValidDisplayLabel)
         {
@@ -317,6 +324,12 @@ namespace EngVocabApp
             {
 
             }
+        }
+
+        private void ButtonTEST_click(object sender, RoutedEventArgs e)
+        {
+            InsertNewWord insertNewWordWindow = new InsertNewWord();
+            insertNewWordWindow.Show();
         }
     }
 }
