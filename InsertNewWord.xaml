@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EngVocabApp"
         mc:Ignorable="d"
-        Title="InsertNewWord" Height="500" Width="800" MinWidth="800" MinHeight="500">
+        Title="InsertNewWord" Height="550" Width="800" MinWidth="800" MinHeight="550">
     <Grid>
+        <Label x:Name="InsertNewWordValidationLabel"
+            Content="" 
+               HorizontalAlignment="Center" 
+               Margin="30,54,0,0" 
+               VerticalAlignment="Top"/>
+
         <Label Content="Word: "
                HorizontalAlignment="Center" 
                Margin="62,49,670.333,0" 
@@ -22,11 +28,12 @@
                    Text="" 
                    VerticalAlignment="Top"
                    FontSize="16px"
+                   KeyUp="InsertNewWord_TextBox_KeyUp"
                    />
 
         <ListView x:Name="InsertSuggestedWords_ListView" 
                   HorizontalAlignment="Center" 
-                  Height="90" Margin="415,26,78.333,0" 
+                  Height="90" Margin="483,26,0,0" 
                   VerticalAlignment="Top" Width="300" 
                   BorderBrush="{x:Null}" 
                   SelectionChanged="InsertSuggestedWords_ListView_SelectionChanged" 
@@ -40,7 +47,8 @@
         </ListView>
         <Grid x:Name="InsertNewWordMeaningGrid"
               Width="650" 
-              MaxWidth="650" MinWidth="650" Height="150" MinHeight="150" MaxHeight="150" Margin="62,121,31.333,49.667"
+              MaxWidth="650" MinWidth="650" Height="150" MinHeight="150" MaxHeight="150" 
+              Margin="62,121,31.333,49.667"
               HorizontalAlignment="Center"
               VerticalAlignment="Top"
               >
@@ -59,7 +67,7 @@
                           HorizontalAlignment="Left" VerticalAlignment="Top" Width="620" 
                           Height="100"                    
                           MaxHeight="200"
-                          Margin="0,50,0,0" >
+                          Margin="0,50,0,0" BorderThickness="10" >
                 <StackPanel 
                     x:Name="WordMeaningStackPanel"
                     HorizontalAlignment="Left" 
@@ -67,10 +75,55 @@
                     Margin="0" 
                     VerticalAlignment="Top" 
                     Width="620" CanVerticallyScroll="True" 
-                    ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" CanHorizontallyScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                    ScrollViewer.CanContentScroll="True" 
+                    CanHorizontallyScroll="True" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                    IsManipulationEnabled="True"/>
             </ScrollViewer>
         </Grid>
-
+        <Grid x:Name="InsertNewWordExampleGrid" 
+              Width="650" MinWidth="650" MaxWidth="650" 
+              Height="150" MinHeight="150" MaxHeight="150"
+              Margin="62,300,31.333,49.667"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Top"
+              >
+            <TextBlock HorizontalAlignment="Left" 
+                   Margin="0,10,0,0" 
+                   TextWrapping="Wrap" 
+                   FontSize="18"
+                   Text="Examples" 
+                   VerticalAlignment="Top" Height="30" Width="620" TextAlignment="Center"/>
+            <Button x:Name="AddWordExampleButton" 
+                Content="+" HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="30" Height="30" Margin="620,10,0,0" MinWidth="30" MaxWidth="30" MinHeight="30" MaxHeight="30" 
+                FontSize="16" FontWeight="Bold" FontStretch="UltraExpanded" Click="AddWordExampleButton_Press"/>
+            <ScrollViewer x:Name="WordExampleScrollViewer" VerticalScrollBarVisibility="Hidden"
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Width="620" 
+                          Height="100"                    
+                          MaxHeight="200"
+                          Margin="0,50,0,0">
+                <StackPanel 
+                    x:Name="WordExampleStackPanel"
+                    HorizontalAlignment="Left" 
+                    Height="700" 
+                    Margin="0" 
+                    VerticalAlignment="Top" 
+                    Width="620" CanVerticallyScroll="True" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                    ScrollViewer.CanContentScroll="True" 
+                    CanHorizontallyScroll="True" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                    IsManipulationEnabled="True"/>
+            </ScrollViewer>
+        </Grid>
+        <Button x:Name="InsertNewWordSubmitButton" 
+                Content="Submit" 
+                HorizontalAlignment="Center" Margin="0,480,0,0" 
+                VerticalAlignment="Top" Width="75" Click="InsertNewWordSubmitButton_Click"/>
+        
     </Grid>
 </Window>
 

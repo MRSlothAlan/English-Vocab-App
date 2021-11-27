@@ -24,5 +24,18 @@ namespace EngVocabApp
         {
             InitializeComponent();
         }
+
+        private void WordExampleDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.StackPanel curObjPanel = (System.Windows.Controls.StackPanel)Parent;
+            foreach (EngVocabApp.VocabExamplesUserControl element in curObjPanel.Children)
+            {
+                if (element.WordExampleDeleteButton == sender)
+                {
+                    curObjPanel.Children.Remove(element);
+                    return;
+                }
+            }
+        }
     }
 }

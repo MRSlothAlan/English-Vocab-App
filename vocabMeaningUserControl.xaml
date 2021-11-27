@@ -5,17 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EngVocabApp"
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="600" MaxWidth="600" MaxHeight="30">
+             d:DesignHeight="30" 
+             d:DesignWidth="600" MaxWidth="600" MaxHeight="30">
     <Grid x:Name="vocabMeaningUserControlWindow" MinWidth="600" Width="600">
-        <Label x:Name="WordFormLabel" Content="Word Form: " HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center"/>
-        <TextBox x:Name="WordFormTextBox" HorizontalAlignment="Left" Height="23" Margin="80,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="60" FontSize="14"/>
+        <Label x:Name="WordFormLabel" Content="Word Form: " 
+               HorizontalAlignment="Left" 
+               Margin="0,0,0,0" 
+               VerticalAlignment="Center"/>
+        <TextBox x:Name="WordFormTextBox" 
+                 HorizontalAlignment="Left" 
+                 Height="23" 
+                 Margin="80,0,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Center" 
+                 Width="60" FontSize="14"/>
         <Label x:Name="MeaningLabel" Content="Meaning: " HorizontalAlignment="Left" Margin="140,0,0,0" VerticalAlignment="Center"/>
-        <TextBox x:Name="MeaningTextBox" HorizontalAlignment="Left" Height="23" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="325" FontSize="14"/>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Width="20" Height="20" Margin="550,0,0,0"/>
+        <TextBox x:Name="MeaningTextBox" HorizontalAlignment="Left"
+                 Height="23" Margin="210,0,0,0" 
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Center" 
+                 Width="350" FontSize="14"/>
+        <Button x:Name="CancelButton" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="20" Height="20" 
+                Margin="570,5,0,0" 
+                Content="X" Click="CancelButton_Click" 
+                IsManipulationEnabled="True"/>
     </Grid>
 </UserControl>
 
-    <!-- 
+<!-- 
     Usually the design process is troublesome
     The function building part is pretty easy.
     -->

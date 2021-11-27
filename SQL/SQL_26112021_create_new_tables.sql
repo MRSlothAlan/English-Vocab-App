@@ -22,3 +22,23 @@ CREATE TABLE [dbo].[EngVocabExamples]
 	[VocabId] uniqueidentifier NOT NULL,
 	[Content] varchar(max) NOT NULL
 );
+
+/****** Object: Table [dbo].[EngVocab] Script Date: 27/11/2021 10:04:25 pm ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[EngVocab] (
+    [Id]         UNIQUEIDENTIFIER NULL,
+    [Vocab]      VARCHAR (50)     NULL,
+    [Meaning]    VARCHAR (MAX)    NULL,	-- well, save the first meaning exist in the entry.
+    [InsertDate] DATETIME         NULL,
+    [UpdateDate] DATETIME         NULL
+);
+
+
+-- Quiz generation SQL code here.
+
+-- more difficult functions here.

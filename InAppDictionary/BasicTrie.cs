@@ -40,7 +40,7 @@ namespace InAppDictionary
         private bool wordFound;
         private List<string> wordSuggestions;
         private int MAX_SUGGEST = 30;
-        private int MAX_SUGGEST_SEARCH_DEPTH = 15;  
+        private int MAX_SUGGEST_SEARCH_DEPTH = 15;     // length of the word extention to be searched
 
         public BasicTrie(string in_default_dict_path)
         {

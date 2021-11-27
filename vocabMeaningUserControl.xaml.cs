@@ -24,5 +24,22 @@ namespace EngVocabApp
         {
             InitializeComponent();
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+             * Search in parent window and delete entries based on button.
+             * Each button has unique addresses and configurations.
+             * */
+            System.Windows.Controls.StackPanel curObjPanel = (System.Windows.Controls.StackPanel)Parent;
+            foreach (EngVocabApp.vocabMeaningUserControl element in curObjPanel.Children)
+            {
+                if (element.CancelButton == sender)
+                {
+                    curObjPanel.Children.Remove(element);
+                    return;
+                }
+            }
+        }
     }
 }

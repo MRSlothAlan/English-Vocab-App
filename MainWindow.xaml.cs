@@ -326,7 +326,7 @@ namespace EngVocabApp
             }
         }
 
-        private void ButtonTEST_click(object sender, RoutedEventArgs e)
+        private void InsertWordMenuItem_Click(object sender, RoutedEventArgs e)
         {
             InsertNewWord insertNewWordWindow = new InsertNewWord();
             insertNewWordWindow.Show();
