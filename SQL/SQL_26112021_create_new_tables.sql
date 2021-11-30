@@ -1,10 +1,13 @@
 ﻿USE [C:\USERS\TINGK\SOURCE\REPOS\ENGVOCABAPP\BIN\DEBUG\ENGVOCAB.MDF]
 
-select * from dbo.EngVocab;
+SET ANSI_NULLS ON;
+GO;
 
-drop table dbo.EngVocabExamples;
+-- select * from dbo.EngVocab;
 
-drop table dbo.EngVocabMeanings;
+-- drop table dbo.EngVocabExamples;
+
+-- drop table dbo.EngVocabMeanings;
 
 
 CREATE TABLE [dbo].[EngVocabMeanings]
@@ -24,6 +27,8 @@ CREATE TABLE [dbo].[EngVocabExamples]
 );
 
 /****** Object: Table [dbo].[EngVocab] Script Date: 27/11/2021 10:04:25 pm ******/
+
+/*
 SET ANSI_NULLS ON
 GO
 
@@ -37,7 +42,7 @@ CREATE TABLE [dbo].[EngVocab] (
     [InsertDate] DATETIME         NULL,
     [UpdateDate] DATETIME         NULL
 );
-
+*/
 
 -- Quiz generation SQL code here.
 

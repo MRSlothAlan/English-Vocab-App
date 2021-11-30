@@ -40,7 +40,7 @@ namespace InAppDictionary
         private bool wordFound;
         private List<string> wordSuggestions;
         private int MAX_SUGGEST = 30;
-        private int MAX_SUGGEST_SEARCH_DEPTH = 15;     // length of the word extention to be searched
+        private int MAX_SUGGEST_SEARCH_DEPTH = 20;     // length of the word extention to be searched
 
         public BasicTrie(string in_default_dict_path)
         {
@@ -120,6 +120,7 @@ namespace InAppDictionary
 
         private void searchTrie(int cwIdx, Node curN)
         {
+            // I think no memory leak happens with this design of tree
             if (this.wordFound) { return; }
             if (cwIdx >= this.cw.Length && 
                 this.binarySearchChar('#', curN) > -1) { this.wordFound = true; return; }

@@ -70,7 +70,49 @@ namespace EngVocabApp
             /*
              * Insert values into databases accordingly
              * */
+            // first, naively check the fields
+            // kinda borning but necessary.
+            if (WordMeaningStackPanel.Children.Count <= 0 ||
+                this.WordExampleStackPanel.Children.Count <= 0)
+            {
+                System.Windows.MessageBox.Show("[ERROR] Entry invalid: Please write at least one meaning and one example related to the vocabulary."
+                    ,"Entry invalid", MessageBoxButton.OK);
+                return;
+            }
+            // check spelling using word trie
+            MainWindow.wordValidationGlobal(InsertSuggestedWords_ListView,
+                this.InsertNewWord_TextBox.Text.ToLower(), InsertNewWordValidationLabel);
+            bool proceed = false;
+            if (InsertNewWordValidationLabel.Content.ToString().Equals("[NOT VALID]"))
+            {
+                System.Windows.MessageBoxResult res = System.Windows.MessageBox.Show(
+                    "[ERROR] Entry invalid:  The "
+                    , "Entry invalid", MessageBoxButton.OKCancel);
+                if (res == MessageBoxResult.OK) { proceed = true; }
+            }
+            else { proceed = true; }
+            if (proceed)
+            {
+                // check existing database of words.
+                System.Data.DataTable dt = SQLcontrol.getInstance()
+                    .ExecuteSQLQuery("Select * from [dbo].[EngVocab] WHERE Vocab = " + '\'' + InsertNewWord_TextBox.Text.ToLower() + '\'');
+                if (dt.Rows.Count > 0)
+                {
+                    // update entries using many ids (@_@) / 
 
+                }
+                else
+                {
+                    // new data (@_@) / insert la.
+                    for (int i = 0; i < WordMeaningStackPanel.Children.Count; i++)
+                    {
+                        vocabMeaningUserControl meaningData;
+                        meaningData = (vocabMeaningUserControl)WordMeaningStackPanel.Children[i];
+                        // modify data.
+
+                    }
+                }
+            }
         }
     }
 }
