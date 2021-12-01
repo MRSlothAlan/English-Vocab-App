@@ -36,6 +36,9 @@ namespace EngVocabApp
 
         public DataTable ExecuteSQLQuery(string in_query)
         {
+            /*
+             * My code to execute query and return datatable
+             * */
             SqlDataAdapter adpt = new SqlDataAdapter(in_query, this.db);
             DataTable dt = new DataTable();
             adpt.Fill(dt);

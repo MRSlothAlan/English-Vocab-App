@@ -63,6 +63,7 @@ namespace EngVocabApp
         Point curMousePointInGrid;
         Transform originalWordMenuTrans;
         static InAppDictionary.BasicTrie appVocabTrie;
+        static DataGrid globalEngVocabDataGrid;
         /*
          * ================ System parameters 
          * */
@@ -70,6 +71,12 @@ namespace EngVocabApp
 
         // this is not needed anymore
         // private SqlConnection db;
+
+        public static void SelectAllVocabGlobal()
+        {
+            globalEngVocabDataGrid.ItemsSource =
+                SQLcontrol.getInstance().ExecuteSQLQuery("Select * from [dbo].[EngVocab]").AsDataView();
+        }
 
         public static void wordValidationGlobal(ListView inSuggestionListView, string cur_word, Label inValidDisplayLabel)
         {
@@ -98,10 +105,10 @@ namespace EngVocabApp
 
         public MainWindow()
         {
+            globalEngVocabDataGrid = engVocabDataGrid;
             this.initFlag = false;
             InitializeComponent();
             vocabTextBox.Text = "";
-            meaningTextBox.Text = "";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -111,7 +118,6 @@ namespace EngVocabApp
             appVocabTrie = new InAppDictionary.BasicTrie((string)System.Configuration.ConfigurationManager.AppSettings["defaulDictionaryPath"].ToString());
             appVocabTrie.setDefaultDictionaryTrie();
             this.vocabTextBox.Text = "";
-            this.meaningTextBox.Text = "";
             this.vocabValidCheck_TextBox.Content = "";
             curGlobalListView = suggestedWords_ListView;
             SQLcontrol.createInstance(this.connectionString);
@@ -121,39 +127,9 @@ namespace EngVocabApp
 
         private void SelectAllVocab()
         {
-            engVocabDataGrid.ItemsSource = SQLcontrol.getInstance().ExecuteSQLQuery("Select * from [dbo].[EngVocab]").AsDataView();
-        }
-
-        private void BtnSubmit_Click(object sender, RoutedEventArgs e)
-        {
-            string meaningTxt = meaningTextBox.Text.Replace("'", "''");
-            DataTable dt = SQLcontrol.getInstance().ExecuteSQLQuery("Select * from [dbo].[EngVocab] WHERE Vocab = " + '\'' + vocabTextBox.Text + '\'');
-
-            if (dt.DefaultView.Count >= 1)
-            {
-                MessageBoxResult res = System.Windows.MessageBox.Show(
-                "[WARNING] The word " + vocabTextBox.Text + " already exist in database. Update the definition of word?", 
-                "Duplicated vocabulary",
-                MessageBoxButton.OKCancel);
-                if (res == MessageBoxResult.OK)
-                {
-                    SQLcontrol.getInstance().ExecuteSQLNonQuery("UPDATE [dbo].[EngVocab] "
-                        + "SET Meaning = " + '\'' + meaningTxt + '\'' + ","
-                        + "UpdateDate = CURRENT_TIMESTAMP "
-                        + "WHERE Vocab = " + '\'' + vocabTextBox.Text + '\'');
-                }
-            }
-            else
-            {
-                SQLcontrol.getInstance().ExecuteSQLNonQuery("INSERT INTO[dbo].[EngVocab] ([Id], [Vocab], [Meaning], [InsertDate], [UpdateDate]) " +
-                "VALUES ( NEWID(), " + '\'' + vocabTextBox.Text + '\'' + ","
-                                     + '\'' + meaningTxt + '\'' + ","
-                                     + "CURRENT_TIMESTAMP" + ","
-                                     + "CURRENT_TIMESTAMP" + ")");
-            }
-            SelectAllVocab();
-            vocabTextBox.Text = "";
-            meaningTextBox.Text = "";
+            engVocabDataGrid.ItemsSource = 
+                SQLcontrol.getInstance().ExecuteSQLQuery("Select * from [dbo].[EngVocab]").AsDataView();
+            globalEngVocabDataGrid = engVocabDataGrid;
         }
 
         private void HideSelectWordMenu()
@@ -178,6 +154,15 @@ namespace EngVocabApp
                         HideSelectWordMenu();
                         DataGrid data = (DataGrid)sender;
                         DataRowView selectedData = (DataRowView)data.CurrentCell.Item;
+                        TranslateTransform wordTransform = new TranslateTransform();
+                        wordTransform.X = this.curMousePointInGrid.X;
+                        wordTransform.Y = this.curMousePointInGrid.Y;
+
+                        if (SelectWordMenu.Height + this.curMousePointInGrid.Y >= EngVocabAppMainWindow.Height)
+                        {
+                            wordTransform.Y -= SelectWordMenu.Height;
+                        }
+
                         try
                         {
                             EngVocabApp.EngVocabDataSet.EngVocabRow vocabData = (EngVocabApp.EngVocabDataSet.EngVocabRow)selectedData.Row;
@@ -185,10 +170,6 @@ namespace EngVocabApp
                             this.curSelectedVocab.curVocab.Id = (System.Guid)vocabData.Id;
                             this.curSelectedVocab.curVocab.Vocab = vocabData.Vocab;
                             this.curSelectedVocab.curVocab.Meaning = vocabData.Meaning;
-
-                            TranslateTransform wordTransform = new TranslateTransform();
-                            wordTransform.X = this.curMousePointInGrid.X;
-                            wordTransform.Y = this.curMousePointInGrid.Y;
                             Console.WriteLine("Coordinates: " + curMousePointInGrid.X.ToString() + "," + curMousePointInGrid.Y.ToString());
                             SelectWordMenu.RenderTransform = wordTransform; // TranslatePoint(wordPoint, engVocabDataGrid);
                             SelectWordMenu.UpdateLayout();
@@ -203,10 +184,6 @@ namespace EngVocabApp
                             this.curSelectedVocab.curVocab.Id = (System.Guid)vocabData.ItemArray[0];
                             this.curSelectedVocab.curVocab.Vocab = (string)vocabData.ItemArray[1];
                             this.curSelectedVocab.curVocab.Meaning = (string)vocabData.ItemArray[2];
-
-                            TranslateTransform wordTransform = new TranslateTransform();
-                            wordTransform.X = this.curMousePointInGrid.X;
-                            wordTransform.Y = this.curMousePointInGrid.Y;
                             Console.WriteLine("Coordinates: " + curMousePointInGrid.X.ToString() + "," + curMousePointInGrid.Y.ToString());
                             SelectWordMenu.RenderTransform = wordTransform; // TranslatePoint(wordPoint, engVocabDataGrid);
                             SelectWordMenu.UpdateLayout();
@@ -262,8 +239,10 @@ namespace EngVocabApp
 
         private void SelectWordMenuUpdateWord_Click(object sender, RoutedEventArgs e)
         {
-            Window UpdateWindow = new UpdateWordWindow(this.curSelectedVocab, engVocabDataGrid);
-            UpdateWindow.Show();
+            Window UpdateExistingWordWindow = new UpdateExistingWord(this.curSelectedVocab.curVocab.Id.ToString(),
+                                                                       this.curSelectedVocab.curVocab.Vocab.ToString());
+            // Window UpdateWindow = new UpdateWordWindow(this.curSelectedVocab, engVocabDataGrid);
+            UpdateExistingWordWindow.Show();
         }
 
         private void engVocabDateGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -330,6 +309,17 @@ namespace EngVocabApp
         {
             InsertNewWord insertNewWordWindow = new InsertNewWord();
             insertNewWordWindow.Show();
+        }
+
+        private void EngVocabAppMainWindow_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            int i = 0;
+        }
+
+        private void EngVocabDataGrid_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            engVocabDataGrid.UnselectAllCells();
+            SelectWordMenu.Visibility = Visibility.Hidden;
         }
     }
 }

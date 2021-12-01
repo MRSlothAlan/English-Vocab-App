@@ -1,0 +1,113 @@
+﻿<Window x:Class="EngVocabApp.UpdateExistingWord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EngVocabApp"
+        mc:Ignorable="d"
+        Title="Update Existing Word" Height="550" Width="800" MinWidth="800" MinHeight="550">
+    <Grid>
+        <Label x:Name="InsertNewWordValidationLabel"
+            Content="" 
+               HorizontalAlignment="Center" 
+               Margin="30,54,0,0" 
+               VerticalAlignment="Top"/>
+
+        <Label Content="Word: "
+               HorizontalAlignment="Center" 
+               Margin="62,49,670.333,0" 
+               VerticalAlignment="Top" 
+               RenderTransformOrigin="0.404,0.154"
+               FontSize="16px" Width="61"/>
+        <Grid x:Name="InsertNewWordMeaningGrid"
+              Width="650" 
+              MaxWidth="650" MinWidth="650" Height="150" MinHeight="150" MaxHeight="150" 
+              Margin="62,121,31.333,49.667"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Top"
+              >
+            <Button x:Name="AddWordMeaningButton" 
+                Content="+" HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="30" Height="30" Margin="620,10,0,0" MinWidth="30" MaxWidth="30" MinHeight="30" MaxHeight="30" 
+                FontSize="16" FontWeight="Bold" FontStretch="UltraExpanded" Click="AddWordMeaningButton_Press"/>
+            <TextBlock HorizontalAlignment="Left" 
+                   Margin="0,10,0,0" 
+                   TextWrapping="Wrap" 
+                   FontSize="18"
+                   Text="Word Meanings" 
+                   VerticalAlignment="Top" Height="30" Width="620" TextAlignment="Center"/>
+            <ScrollViewer x:Name="WordMeaningScrollViewer" VerticalScrollBarVisibility="Hidden"
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Width="620" 
+                          Height="100"                    
+                          MaxHeight="200"
+                          Margin="0,50,0,0" BorderThickness="10" >
+                <StackPanel 
+                    x:Name="WordMeaningStackPanel"
+                    HorizontalAlignment="Left" 
+                    Height="700" 
+                    Margin="0" 
+                    VerticalAlignment="Top" 
+                    Width="620" CanVerticallyScroll="True" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                    ScrollViewer.CanContentScroll="True" 
+                    CanHorizontallyScroll="True" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                    IsManipulationEnabled="True"/>
+            </ScrollViewer>
+        </Grid>
+        <Grid x:Name="InsertNewWordExampleGrid" 
+              Width="650" MinWidth="650" MaxWidth="650" 
+              Height="150" MinHeight="150" MaxHeight="150"
+              Margin="62,300,31.333,49.667"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Top"
+              >
+            <TextBlock HorizontalAlignment="Left" 
+                   Margin="0,10,0,0" 
+                   TextWrapping="Wrap" 
+                   FontSize="18"
+                   Text="Examples" 
+                   VerticalAlignment="Top" Height="30" Width="620" TextAlignment="Center"/>
+            <Button x:Name="AddWordExampleButton" 
+                Content="+" HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="30" Height="30" Margin="620,10,0,0" MinWidth="30" MaxWidth="30" MinHeight="30" MaxHeight="30" 
+                FontSize="16" FontWeight="Bold" FontStretch="UltraExpanded" Click="AddWordExampleButton_Press"/>
+            <ScrollViewer x:Name="WordExampleScrollViewer" VerticalScrollBarVisibility="Hidden"
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Width="620" 
+                          Height="100"                    
+                          MaxHeight="200"
+                          Margin="0,50,0,0">
+                <StackPanel 
+                    x:Name="WordExampleStackPanel"
+                    HorizontalAlignment="Left" 
+                    Height="700" 
+                    Margin="0" 
+                    VerticalAlignment="Top" 
+                    Width="620" CanVerticallyScroll="True" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                    ScrollViewer.CanContentScroll="True" 
+                    CanHorizontallyScroll="True" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                    IsManipulationEnabled="True"/>
+            </ScrollViewer>
+        </Grid>
+        <Button x:Name="UpdateExistingWordSubmitButton" 
+                Content="Submit" 
+                HorizontalAlignment="Center" Margin="0,480,0,0" 
+                VerticalAlignment="Top" Width="75" 
+                Click="UpdateExistingWordSubmitButton_Click"
+                FontSize="16"/>
+        <TextBlock 
+            x:Name="existingVocabulary_TextBlock"
+            HorizontalAlignment="Center" 
+            Margin="0,55,200,0" 
+            TextWrapping="Wrap" Text="TextBlock" 
+            FontSize="16"
+            VerticalAlignment="Top" 
+            Width="350"/>
+
+    </Grid>
+</Window>
+

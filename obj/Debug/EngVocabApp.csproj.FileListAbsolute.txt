@@ -42,3 +42,7 @@ C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\Themes\Generic.baml
 C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\vocabMeaningUserControl.baml
 C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\VocabExamplesUserControl.g.cs
 C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\VocabExamplesUserControl.baml
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\UpdateExistingWord.g.cs
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\UpdateExistingWord.baml
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\QuizOptionsUserControl.g.cs
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\QuizOptionsUserControl.baml
