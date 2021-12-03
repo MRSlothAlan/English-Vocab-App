@@ -61,6 +61,8 @@ namespace EngVocabApp
             Random random = new Random();
             // pick an index as correct ans
             this.currentCorrectIdx = random.Next(0,4);
+            // not enough word error handling here.
+            // much more.
             QuizVocabTextBlock.Text = (string)dtQuestionContent.Rows[currentCorrectIdx][1];
             System.Data.DataTable dtForUserSelection = new System.Data.DataTable();
             DataColumn dcToAdd = new DataColumn("Meaning");

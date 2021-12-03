@@ -1,7 +1,7 @@
 # Read me for the English vocabulary learning system
 This is another fun side-project fyr. I am going to take the IELTS exam soon and I need a tool to learn new vocabularies quickly. I decided to build it myself.
 
-![Alt text](demo.png?raw=true "Current layout")
+![Alt text](demoUpdated.png?raw=true "Current layout")
 
 The list of removed directories / files:
 
