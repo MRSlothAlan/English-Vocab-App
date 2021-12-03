@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EngVocabApp
 {
     /// <summary>
-    /// Interaction logic for QuizOptions.xaml
+    /// Interaction logic for QuizOptionsUserControl.xaml
     /// </summary>
-    public partial class QuizOptions : UserControl
+    public partial class QuizOptionsUserControl : UserControl
     {
-        public QuizOptions()
+        public QuizOptionsUserControl()
         {
             InitializeComponent();
         }

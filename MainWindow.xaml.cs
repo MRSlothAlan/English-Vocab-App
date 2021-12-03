@@ -211,6 +211,8 @@ namespace EngVocabApp
             if (res == MessageBoxResult.OK)
             {
                 SQLcontrol.getInstance().ExecuteSQLNonQuery("TRUNCATE TABLE[dbo].[EngVocab]");
+                SQLcontrol.getInstance().ExecuteSQLNonQuery("TRUNCATE TABLE[dbo].[EngVocabMeanings]");
+                SQLcontrol.getInstance().ExecuteSQLNonQuery("TRUNCATE TABLE[dbo].[EngVocabExamples]");
                 SelectAllVocab();
             }
         }
@@ -257,7 +259,15 @@ namespace EngVocabApp
 
         private void SelectWordMenuDeleteWord_Click(object sender, RoutedEventArgs e)
         {
-            SQLcontrol.getInstance().ExecuteSQLNonQuery("DELETE FROM [dbo].[EngVocab] WHERE Id = " + '\'' + this.curSelectedVocab.curVocab.Id.ToString().Replace("'", "''") + '\'' + "");
+            SQLcontrol.getInstance().ExecuteSQLNonQuery(
+                "DELETE FROM [dbo].[EngVocab] WHERE Id = " + '\'' + 
+                this.curSelectedVocab.curVocab.Id.ToString().Replace("'", "''") + '\'' + "");
+            SQLcontrol.getInstance().ExecuteSQLNonQuery(
+                "DELETE FROM [dbo].[EngVocabMeanings] WHERE VocabId = " + '\'' +
+                this.curSelectedVocab.curVocab.Id.ToString().Replace("'", "''") + '\'' + "");
+            SQLcontrol.getInstance().ExecuteSQLNonQuery(
+                "DELETE FROM [dbo].[EngVocabExamples] WHERE VocabId = " + '\'' + 
+                this.curSelectedVocab.curVocab.Id.ToString().Replace("'", "''") + '\'' + "");
             SelectAllVocab();
             HideSelectWordMenu();
         }

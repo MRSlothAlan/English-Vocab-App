@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EngVocabApp"
         mc:Ignorable="d"
-        Title="QuizWindow" Height="450" Width="800">
+        Title="QuizWindow" Height="550" Width="800" MinHeight="550" MinWidth="800">
     <Grid>
-        
+        <DataGrid 
+            x:Name="PossibleMeaningsDataGrid"
+            HorizontalAlignment="Center" 
+            Height="200" 
+            Margin="0,146,0,0" 
+            VerticalAlignment="Top" 
+            Width="760" 
+            SelectionChanged="PossibleMeaningsDataGrid_SelectionChanged" 
+            MinColumnWidth="100">
+        </DataGrid>
+        <TextBlock 
+            x:Name="QuizVocabTextBlock"
+            HorizontalAlignment="Center" 
+            Margin="25,70,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            MinWidth="200"
+            FontSize="20"
+            VerticalAlignment="Top"/>
+        <Button x:Name="QuizWindowSubmitButton" 
+            FontSize="16"
+            Content="Submit" 
+            HorizontalAlignment="Center" 
+            Margin="0,400,0,0" 
+            VerticalAlignment="Top" 
+            Width="75" Click="QuizWindowSubmitButton_Click"/>
     </Grid>
 </Window>
