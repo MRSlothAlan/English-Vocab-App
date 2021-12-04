@@ -38,6 +38,7 @@ namespace EngVocabApp
              * in the meantime, revise the vocab.
              * */
             this.cur_selection = "";
+            this.dtQuestionContent = new DataTable();
             this.dtQuestionContent = 
                 SQLcontrol.getInstance().ExecuteSQLQuery(
                     @" SELECT Id, Vocab, Content, Meaning, WordForm FROM 
@@ -64,6 +65,7 @@ namespace EngVocabApp
             // not enough word error handling here.
             // much more.
             QuizVocabTextBlock.Text = (string)dtQuestionContent.Rows[currentCorrectIdx][1];
+
             System.Data.DataTable dtForUserSelection = new System.Data.DataTable();
             DataColumn dcToAdd = new DataColumn("Meaning");
             DataColumn dcToAddWordForm = new DataColumn("WordForm");
@@ -136,7 +138,8 @@ Example sentence is : ()."
             }
             catch (Exception)
             {
-                throw new Exception("Update grid caused error");
+                // throw new Exception("Update grid caused error");
+                return;
             }
         }
     }

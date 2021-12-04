@@ -34,6 +34,11 @@ A customized tree data structure is implemented to search for words in O(N^2(log
 ### Basic operations for the word database
 Insert, update, delete vocabularies, along with their meanings.
 
+### A quiz generator
+For revising the vocabularies.
+
 #To-do:
-* Implement a quiz function.
+* Implement an efficient filtering function
+* In-text vocab spelling checker
+* undo function
 
