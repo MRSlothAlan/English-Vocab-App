@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="EngVocabApp.displayWordMeaningsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EngVocabApp"
+             mc:Ignorable="d" 
+             Height="33" MaxHeight="100" Width="750" MaxWidth="750">
+    <Grid>
+        <Label 
+            Content="Word Form" 
+            HorizontalAlignment="Left" 
+            Margin="5,0,0,0" 
+            FontSize="12"
+            VerticalAlignment="Top"/>
+        <Label 
+            x:Name="wordFormLabel"
+            Width="70"
+            Content="" 
+            HorizontalAlignment="Left" 
+            Margin="80,0,0,0" 
+            FontSize="12"
+            VerticalAlignment="Top"/>
+        <Label 
+            Content="Meaning" 
+            HorizontalAlignment="Left" 
+            Margin="150,0,0,0" 
+            FontSize="12"
+            VerticalAlignment="Top"/>
+        <ScrollViewer HorizontalAlignment="Left" 
+                      Height="23" 
+                      Margin="210,5,0,0" 
+                      VerticalAlignment="Top" 
+                      Width="530"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <TextBlock
+                ScrollViewer.CanContentScroll="True"
+                x:Name="wordMeaningTextBlock"
+                Text=""
+                HorizontalAlignment="Left" 
+                Margin="0,0,0,0" 
+                FontSize="14"
+                Width="530"
+                Height="1000"
+                VerticalAlignment="Top"/>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

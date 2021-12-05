@@ -98,6 +98,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="displayExamplesWindow.xaml.cs">
+      <DependentUpon>displayExamplesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="displayWordMeaningsUserControl.xaml.cs">
+      <DependentUpon>displayWordMeaningsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuizOptionsUserControl.xaml.cs">
       <DependentUpon>QuizOptionsUserControl.xaml</DependentUpon>
     </Compile>
@@ -121,6 +127,14 @@
     <Compile Include="vocabMeaningUserControl.xaml.cs">
       <DependentUpon>vocabMeaningUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="displayExamplesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="displayWordMeaningsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="QuizOptionsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -20,6 +20,7 @@ namespace EngVocabApp
     /// </summary>
     public partial class QuizWindow : Window
     {
+        private string currentCorrectVocabId;
         private int currentCorrectIdx;
         private string cur_selection;
         private System.Data.DataTable dtQuestionContent;
@@ -65,6 +66,7 @@ namespace EngVocabApp
             // not enough word error handling here.
             // much more.
             QuizVocabTextBlock.Text = (string)dtQuestionContent.Rows[currentCorrectIdx][1];
+            this.currentCorrectVocabId = dtQuestionContent.Rows[currentCorrectIdx][0].ToString();
 
             System.Data.DataTable dtForUserSelection = new System.Data.DataTable();
             DataColumn dcToAdd = new DataColumn("Meaning");
@@ -86,6 +88,8 @@ namespace EngVocabApp
 
         private void QuizWindowSubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            displayExamplesWindow disWindow = new displayExamplesWindow(this.currentCorrectVocabId, QuizVocabTextBlock.Text);
+            disWindow.Show();
             if (this.cur_selection.Equals(
                 (string)this.dtQuestionContent.Rows[this.currentCorrectIdx][3]))
             {
