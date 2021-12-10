@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EngVocabApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" FocusableChanged="EngVocabAppMainWindow_FocusableChanged">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" FocusableChanged="EngVocabAppMainWindow_FocusableChanged" Closing="EngVocabAppMainWindow_Closing">
     <Window.Resources>
         <local:EngVocabDataSet x:Key="engVocabDataSet"/>
         <CollectionViewSource x:Key="engVocabViewSource" Source="{Binding EngVocab, Source={StaticResource engVocabDataSet}}"/>
@@ -28,6 +28,19 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
+        <Button x:Name="AddToMemoButton"
+                Content="Add to memo" 
+                HorizontalAlignment="Left" 
+                Margin="194,95,0,0" 
+                VerticalAlignment="Top" 
+                Width="100" Click="AddToMemoButton_Click"/>
+        <Button 
+                x:Name="GetFromMemoButton"
+                Content="Get from memo" 
+                HorizontalAlignment="Left" 
+                Margin="320,95,0,0" 
+                VerticalAlignment="Top" 
+                Width="100" Click="GetFromMemoButton_Click"/>
         <TextBox x:Name="vocabTextBox" Height="30" 
                  Margin="250,30,0,0" 
                  HorizontalAlignment="Left"

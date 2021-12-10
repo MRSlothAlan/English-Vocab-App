@@ -49,6 +49,58 @@ namespace EngVocabApp
             this.curVocab = new EngVocab();
         }
     }
+    public class WordToAddQueue
+    {
+        private List<string> wordToAddQueue;
+        private string savedQueueDataFilePath;
+        public WordToAddQueue()
+        {
+            wordToAddQueue = new List<string>();
+            this.savedQueueDataFilePath = 
+                (string)System.Configuration.ConfigurationManager.AppSettings["defaultVocabQueuePath"].ToString();
+            if (!System.IO.File.Exists(savedQueueDataFilePath))
+            {
+                System.IO.File.Create(savedQueueDataFilePath);
+            }
+            else
+            {
+                foreach (string words in System.IO.File.ReadAllLines(savedQueueDataFilePath))
+                {
+                    this.wordToAddQueue.Add(words);
+                }
+            }
+        }
+
+        public void insert(string in_word)
+        {
+            this.wordToAddQueue.Add(in_word);
+        }
+
+        public string getNext()
+        {
+            string res = "";
+            while (this.wordToAddQueue.Count > 0)
+            {
+                string cur = this.wordToAddQueue[0];
+                this.wordToAddQueue.RemoveAt(0);
+                System.Data.DataTable curDT = 
+                    SQLcontrol.getInstance().ExecuteSQLQuery("SELECT * FROM [dbo].[EngVocab]" +
+                    "WHERE Vocab = " + '\'' + cur.ToLower() + '\'');
+                if (curDT.Rows.Count <= 0)
+                {
+                    res = cur;
+                    break;
+                }
+            }
+            return res;
+        }
+
+        public void writeQueueDataToFile()
+        {
+            System.IO.File.Delete(this.savedQueueDataFilePath);
+            System.IO.File.WriteAllLines(this.savedQueueDataFilePath, this.wordToAddQueue.ToArray());
+        }
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -57,6 +109,7 @@ namespace EngVocabApp
         /*
          *  =============== System parameters
          * */
+        private WordToAddQueue wordToAddQueue;
         static ListView curGlobalListView;
         bool initFlag = false;
         DataGridSelectedVocab curSelectedVocab;
@@ -115,13 +168,16 @@ namespace EngVocabApp
         {
             this.originalWordMenuTrans = SelectWordMenu.RenderTransform;
             // load the trie and dictionary
-            appVocabTrie = new InAppDictionary.BasicTrie((string)System.Configuration.ConfigurationManager.AppSettings["defaulDictionaryPath"].ToString());
+            appVocabTrie = new InAppDictionary.BasicTrie(
+                (string)System.Configuration.ConfigurationManager.AppSettings["defaultDictionaryPath"].ToString());
             appVocabTrie.setDefaultDictionaryTrie();
             this.vocabTextBox.Text = "";
             this.vocabValidCheck_TextBox.Content = "";
             curGlobalListView = suggestedWords_ListView;
             SQLcontrol.createInstance(this.connectionString);
             SelectAllVocab();
+            wordToAddQueue = new WordToAddQueue();
+            // add to text box.
             this.initFlag = true;
         }
 
@@ -278,7 +334,8 @@ namespace EngVocabApp
             // set visibility of menu into hidden first.
             suggestedWords_ListView.Visibility = Visibility.Hidden;
             string cur_word = this.vocabTextBox.Text.ToLower();
-            if (appVocabTrie.isValidWord(cur_word)) { this.vocabValidCheck_TextBox.Content = "[VALID]"; }
+            if (appVocabTrie.isValidWord(cur_word)) {
+                this.vocabValidCheck_TextBox.Content = "[VALID]"; }
             else
             {
                 this.vocabValidCheck_TextBox.Content = "[NOT VALID]";
@@ -330,6 +387,25 @@ namespace EngVocabApp
         {
             engVocabDataGrid.UnselectAllCells();
             SelectWordMenu.Visibility = Visibility.Hidden;
+        }
+
+        private void EngVocabAppMainWindow_Closing(object sender, 
+            System.ComponentModel.CancelEventArgs e)
+        {
+            this.wordToAddQueue.writeQueueDataToFile();
+        }
+
+        private void AddToMemoButton_Click(object sender, RoutedEventArgs e)
+        {
+            string curText = vocabTextBox.Text;
+            this.wordToAddQueue.insert(curText);
+            vocabTextBox.Text = "";
+        }
+
+        private void GetFromMemoButton_Click(object sender, RoutedEventArgs e)
+        {
+            string toDisplayText = this.wordToAddQueue.getNext();
+            vocabTextBox.Text = toDisplayText;
         }
     }
 }
