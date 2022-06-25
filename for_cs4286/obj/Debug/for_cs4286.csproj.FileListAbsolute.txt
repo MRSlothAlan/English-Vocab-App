@@ -1,0 +1,15 @@
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\for_cs4286.exe.config
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\for_cs4286.exe
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\for_cs4286.pdb
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\AppOperations.dll
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\cs_Playground.exe
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\InAppDictionary.dll
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\AppOperations.pdb
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\cs_Playground.pdb
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\cs_Playground.exe.config
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\bin\Debug\InAppDictionary.pdb
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\obj\Debug\for_cs4286.csprojAssemblyReference.cache
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\obj\Debug\for_cs4286.csproj.CoreCompileInputs.cache
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\obj\Debug\for_cs4286.csproj.CopyComplete
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\obj\Debug\for_cs4286.exe
+C:\Users\tingk\source\repos\EngVocabApp\for_cs4286\obj\Debug\for_cs4286.pdb

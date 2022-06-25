@@ -125,6 +125,13 @@ namespace EngVocabApp
         // this is not needed anymore
         // private SqlConnection db;
 
+        public static void SelectSearchVocabGlobal(string in_word)
+        {
+            globalEngVocabDataGrid.ItemsSource =
+                SQLcontrol.getInstance().ExecuteSQLQuery("Select * from [dbo].[EngVocab] WHERE Vocab = " + 
+                '\'' + in_word.ToLower() + '\'').AsDataView();
+        }
+        
         public static void SelectAllVocabGlobal()
         {
             globalEngVocabDataGrid.ItemsSource =
@@ -273,11 +280,13 @@ namespace EngVocabApp
             }
         }
 
-        private void FilterWordsMenuItem_Click(object sender, RoutedEventArgs e)
+        private void SearchWordMenuItem_Click(object sender, RoutedEventArgs e)
         {
             /*
-             * Filter the word selected. pop up a dialogue box to get requirements.
+             * Search for the word in the database
              */
+            Window SearchWordWindow = new SearchWord();
+            SearchWordWindow.Show();
         }
 
         private void WordQuizMenuItem_Click(object sender, RoutedEventArgs e)
@@ -397,8 +406,11 @@ namespace EngVocabApp
 
         private void AddToMemoButton_Click(object sender, RoutedEventArgs e)
         {
-            string curText = vocabTextBox.Text;
-            this.wordToAddQueue.insert(curText);
+            string curText = vocabTextBox.Text.ToLower().Trim();
+            if (curText.Length > 0)
+            {
+                this.wordToAddQueue.insert(curText);
+            }
             vocabTextBox.Text = "";
         }
 
@@ -406,6 +418,11 @@ namespace EngVocabApp
         {
             string toDisplayText = this.wordToAddQueue.getNext();
             vocabTextBox.Text = toDisplayText;
+        }
+
+        private void SearchAllWordsButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.SelectAllVocab();
         }
     }
 }

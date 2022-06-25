@@ -50,3 +50,5 @@ C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\displayExamplesWindow.g.cs
 C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\displayWordMeaningsUserControl.g.cs
 C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\displayExamplesWindow.baml
 C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\displayWordMeaningsUserControl.baml
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\SearchWord.g.cs
+C:\Users\tingk\source\repos\EngVocabApp\obj\Debug\SearchWord.baml
